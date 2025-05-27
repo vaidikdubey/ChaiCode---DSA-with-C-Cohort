@@ -83,10 +83,8 @@ public:
                 }
             }
 
-            Node *locationCopy = itr->next;
-
+            temp->next = itr->next;
             itr->next = temp;
-            temp->next = locationCopy;
         }
     }
 

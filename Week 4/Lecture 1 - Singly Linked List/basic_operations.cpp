@@ -153,7 +153,7 @@ public:
         else {
             Node *itr = head;
 
-            while(position - 2 != 0) {
+            while(position - 2 != 0 && itr -> next != NULL) {
                 itr = itr->next;
                 position--;
             }

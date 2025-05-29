@@ -109,6 +109,62 @@ public:
             itr->next = temp;
         }
     }
+
+    void delete_at_beg() {
+        if(head == NULL) {
+            cout << "Empty List" << endl;
+            return;
+        }
+
+        Node *temp = head;
+
+        head = head -> next;
+
+        delete temp;
+    }
+
+    void delete_at_end() {
+        if(head == NULL) {
+            cout << "Empty List" << endl;
+        }
+        else if(head -> next == NULL) {
+            delete head;
+        }
+        else {
+            Node *temp = head;
+
+            while(temp -> next -> next != NULL) {
+                temp = temp->next;
+            }
+
+            delete temp -> next;
+
+            temp->next = NULL;
+        }
+    }
+
+    void delete_at_position(int position) {
+        if(head == NULL) {
+            cout << "Empyt List" << endl;
+        }
+        else if(position == 1) {
+            delete_at_beg();
+        }
+        else {
+            Node *itr = head;
+
+            while(position - 2 != 0) {
+                itr = itr->next;
+                position--;
+            }
+
+            Node *temp = itr->next;
+
+            itr->next = temp->next;
+
+            delete temp;
+        }
+    }
 };
 
 int main()
@@ -127,6 +183,12 @@ int main()
 
     ll.insert_in_mid(132, 3);
     ll.insert_in_mid(176, 5);
+
+    ll.delete_at_beg();
+
+    ll.delete_at_end();
+
+    ll.delete_at_position(3);
 
     ll.print();
 
